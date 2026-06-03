@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Boutique</title><link rel='stylesheet' href='style.css'></head><body>
+<div class='top'><div class='logo'>ILIESCARCLEAN</div><a href='cart.html'>🛒 Panier</a></div>
+<div class='wrap'><h1>Boutique</h1><div id='products' class='grid'></div></div>
+<script>
+const imgs=['https://picsum.photos/seed/a/600/400','https://picsum.photos/seed/b/600/400','https://picsum.photos/seed/c/600/400'];
+let html='';
+for(let i=1;i<=30;i++){
+html+=`<div class="card product"><span class="badge">Promo</span><img src="${imgs[i%3]}"><h3>Produit Auto ${i}</h3><p>${9+i}.90 €</p><button onclick="add(${i})">Ajouter au panier</button></div>`;
+}
+products.innerHTML=html;
+function add(id){
+let c=JSON.parse(localStorage.getItem('cart')||'[]'); c.push(id); localStorage.setItem('cart',JSON.stringify(c));
+alert('Produit ajouté au panier');
+}
+</script></body></html>

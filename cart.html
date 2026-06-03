@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Panier</title><link rel='stylesheet' href='style.css'></head><body>
+<div class='top'><div class='logo'>ILIESCARCLEAN</div></div>
+<div class='wrap'><h1>Panier</h1><div id='list'></div><h2 id='total'></h2></div>
+<script>
+let c=JSON.parse(localStorage.getItem('cart')||'[]');
+let t=0;
+list.innerHTML=c.map((x,i)=>{t+=(9+x); return `<div class='card'>Produit Auto ${x} - ${(9+x)}.90 € <button onclick='del(${i})'>Supprimer</button></div>`}).join('');
+total.innerText='Total estimé : '+t.toFixed(2)+' €';
+function del(i){c.splice(i,1);localStorage.setItem('cart',JSON.stringify(c));location.reload();}
+</script></body></html>
