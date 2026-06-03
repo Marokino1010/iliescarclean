@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Boutique</title><link rel='stylesheet' href='style.css'></head><body>
+<nav><div class='logo'>ILIESCARCLEAN</div><a href='index.html'>Accueil</a></nav>
+<h1>Boutique</h1><input id='search' placeholder='Rechercher'>
+<div id='products' class='grid'></div>
+<script>
+const data=[...Array(40)].map((_,i)=>({n:'Produit Auto '+(i+1),p:(9.9+i).toFixed(2)}));
+function render(v){products.innerHTML=v.map(x=>`<div class="box"><h3>${x.n}</h3><p>${x.p} €</p><button onclick="add('${x.n}')">Ajouter</button></div>`).join('')}
+function add(n){let c=JSON.parse(localStorage.cart||'[]');c.push(n);localStorage.cart=JSON.stringify(c);alert('Ajouté au panier')}
+search.oninput=e=>render(data.filter(x=>x.n.toLowerCase().includes(e.target.value.toLowerCase())))
+render(data)
+</script></body></html>
